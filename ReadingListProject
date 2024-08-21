@@ -11,6 +11,7 @@ The `My_Reading_List` table includes the following columns:
 - `start_date`: DATE - When the book was started
 - `finish_date`: DATE - When the book was finished
 
+## Code
 -- Create the table
 CREATE TABLE My_Reading_List (
     number INT PRIMARY KEY,
