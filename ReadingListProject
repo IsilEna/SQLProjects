@@ -1,0 +1,77 @@
+# My Reading List Project
+
+## Overview
+This project involves a SQL database to manage a reading list. It includes operations to add books, retrieve specific data, and calculate reading durations.
+## Table Structure
+The `My_Reading_List` table includes the following columns:
+- `number`: INT, Primary Key
+- `category`: VARCHAR(20) - Genre of the book
+- `book`: VARCHAR(90) - Title of the book
+- `author`: VARCHAR(25) - Author of the book
+- `start_date`: DATE - When the book was started
+- `finish_date`: DATE - When the book was finished
+
+-- Create the table
+CREATE TABLE My_Reading_List (
+    number INT PRIMARY KEY,
+    category VARCHAR(20),
+    book VARCHAR(90),
+    author VARCHAR(25),
+    start_date DATE,
+    finish_date DATE
+);
+-- Describe the table structure
+DESCRIBE My_Reading_List;
+-- Insert sample data into the table
+INSERT INTO My_Reading_List VALUES(1,'Drama','Hamlet','William Shakespeare','2020-03-15','2020-04-30');
+INSERT INTO My_Reading_List VALUES(2,'Drama','The Tempest','William Shakespeare','2021-04-15','2021-04-30');
+INSERT INTO My_Reading_List VALUES(3,'Science Fiction','Dune','Frank Herbert','2021-05-17','2021-07-30');
+INSERT INTO My_Reading_List VALUES(4,'Science Fiction','Foundation','Isaac Asimov','2020-01-19','2020-03-31');
+INSERT INTO My_Reading_List VALUES(5,'Mystery','Rebecca','Daphne du Maurier','2023-07-13','2023-12-30');
+INSERT INTO My_Reading_List VALUES(6,'Horror','Dracula','Bram Stoker','2020-01-12','2020-11-20');
+INSERT INTO My_Reading_List VALUES(7,'Mystery','The Secret History','Donna Tartt','2024-02-11','2024-06-27');
+INSERT INTO My_Reading_List VALUES(8,'Drama','An Ideal Husband','Oscar Wilde','2021-07-12','2021-08-08');
+
+-- Retrieve all records
+SELECT*FROM My_Reading_List;
+
+
+-- Show books and authors for a specific category
+SELECT category, author,book
+FROM MY_Reading_List
+WHERE category='Drama' ;
+
+
+-- Show books with start_date after a specific date
+SELECT start_date, book
+FROM MY_Reading_List
+WHERE start_date>'2022-01-01' ;
+
+-- Show books by a specific author
+SELECT author, book
+FROM MY_Reading_List
+WHERE author='William Shakespeare';
+
+-- Calculate reading duration in days
+SELECT 
+    book,
+    author,
+    start_date,
+    finish_date,
+    DATEDIFF(finish_date, start_date) AS duration
+FROM 
+    My_Reading_List;
+
+
+   -- Show reading durations in descending order
+SELECT 
+    book,
+    author,
+    start_date,
+    finish_date,
+    DATEDIFF(finish_date, start_date)  AS duration 
+FROM My_Reading_List
+    ORDER BY duration DESC;
+
+
+
